@@ -33,4 +33,17 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Backup
       run: |
-        python qiita_backupper.py tkoyama010 md
+        python qiita_backupper.py ${ACCOUNT} md
+        git config user.name ${NAME}
+        git config user.email ${EMAIL}
+        git remote set-url origin https://${ACCOUNT}:${{ secrets.GITHUB_PASS }}@github.com/${ACCOUNT}/${REPO}
+        git branch
+        git checkout tkoyama010-patch-1
+        git branch
+        git add .
+        git commit -m ":green_heart:"
+      env:
+        ACCOUNT: tkoyama010
+        NAME: Tetsuo Koyama
+        EMAIL: tkoyama010@gmail.com
+        REPO: qiita_backupper
