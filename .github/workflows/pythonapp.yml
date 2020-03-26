@@ -4,6 +4,8 @@
 name: Python application
 
 on:
+  schedule:
+    - cron:  '0 0 * * *'
   push:
     branches: [ tkoyama010-patch-1 ]
   pull_request:
