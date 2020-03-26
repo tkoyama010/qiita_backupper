@@ -43,10 +43,10 @@ jobs:
         git checkout tkoyama010-patch-1
         git branch
         git add doc
-        git commit -m ":green_heart:"
+        git commit --allow-empty -m ":green_heart: $GITHUB_RUN_NUMBER"
         git push origin tkoyama010-patch-1
       env:
         ACCOUNT: tkoyama010
-        NAME: Tetsuo Koyama
-        EMAIL: tkoyama010@gmail.com
+        NAME: "qiita-auto-update"
+        EMAIL: "qiita-auto-update"
         REPO: qiita_backupper
