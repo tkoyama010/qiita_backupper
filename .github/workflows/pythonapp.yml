@@ -42,6 +42,7 @@ jobs:
         git branch
         git add doc
         git commit -m ":green_heart:"
+        git push origin tkoyama010-patch-1
       env:
         ACCOUNT: tkoyama010
         NAME: Tetsuo Koyama
