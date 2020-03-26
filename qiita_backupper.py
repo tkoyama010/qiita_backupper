@@ -81,7 +81,7 @@ QIITA_PARAMS = {
     "per_page": 100,
 }
 # バックアップ先のフォルダのパス
-BUCKUP_DIR = os.path.abspath(os.path.dirname(__file__)) + "/backup"
+BUCKUP_DIR = os.path.abspath(os.path.dirname(__file__)) + "/doc"
 # markdownをhtmlに変換するGitHubApiのURL
 HTML_CONVERT_URL = "https://api.github.com/markdown/raw"
 
