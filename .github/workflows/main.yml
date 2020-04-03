@@ -50,4 +50,4 @@ jobs:
         NAME: "qiita-auto-update"
         EMAIL: "qiita-auto-update"
         REPO: qiita_backupper
-        ACTION: ${{ github.action }}
+        ACTION: ${{ github.run_number }}
