@@ -43,10 +43,11 @@ jobs:
         git checkout tkoyama010-patch-1
         git branch
         git add doc
-        git commit --allow-empty -m ":green_heart: GITHUB_ACTION $GITHUB_RUN_NUMBER"
+        git commit --allow-empty -m ":green_heart: GITHUB_ACTION $ACTION"
         git push origin tkoyama010-patch-1
       env:
         ACCOUNT: tkoyama010
         NAME: "qiita-auto-update"
         EMAIL: "qiita-auto-update"
         REPO: qiita_backupper
+        ACTION: ${{ github.action }}
