@@ -38,7 +38,7 @@ jobs:
       id: jobs
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        job_name: update
+        job_name: jobs
     - name: Backup
       run: |
         echo $JOB_ID
