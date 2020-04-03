@@ -38,13 +38,20 @@ jobs:
       id: jobs
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        job_name: jobs
+        job_name: update
     - name: Backup
+      env:
+        ACCOUNT: tkoyama010
+        NAME: "qiita-auto-update"
+        EMAIL: "qiita-auto-update"
+        REPO: qiita_backupper
+        JOB_ID: ${{ steps.jobs.outputs.job_id }}
+        HTML_URL: ${{ steps.jobs.outputs.html_url }}
       run: |
-        echo $JOB_ID
-        echo $HTML_URL
-        echo ${{ steps.jobs.outputs.job_id }}
-        echo ${{ steps.jobs.outputs.html_url }}
+        echo "$JOB_ID"
+        echo "$HTML_URL"
+        echo "${{ steps.jobs.outputs.job_id }}"
+        echo "${{ steps.jobs.outputs.html_url }}"
         python qiita_backupper.py ${ACCOUNT} md
         git config user.name ${NAME}
         git config user.email ${EMAIL}
@@ -56,10 +63,3 @@ jobs:
         git commit --allow-empty -m ":green_heart: JOB_ID $JOB_ID
         HTML_URL $HTML_URL"
         git push origin tkoyama010-patch-1
-      env:
-        ACCOUNT: tkoyama010
-        NAME: "qiita-auto-update"
-        EMAIL: "qiita-auto-update"
-        REPO: qiita_backupper
-        JOB_ID: ${{ steps.jobs.outputs.job_id }}
-        HTML_URL: ${{ steps.jobs.outputs.html_url }}
