@@ -43,7 +43,7 @@ jobs:
         git checkout tkoyama010-patch-1
         git branch
         git add doc
-        git commit --allow-empty -m ":green_heart: GITHUB_ACTION $ACTION"
+        git commit --allow-empty -m ":green_heart: GITHUB_ACTION $JOB_CONTEXT"
         git push origin tkoyama010-patch-1
       env:
         ACCOUNT: tkoyama010
