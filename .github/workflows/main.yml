@@ -41,6 +41,10 @@ jobs:
         job_name: update
     - name: Backup
       run: |
+        echo $JOB_ID
+        echo $HTML_URL
+        echo ${{ steps.jobs.outputs.job_id }}
+        echo ${{ steps.jobs.outputs.html_url }}
         python qiita_backupper.py ${ACCOUNT} md
         git config user.name ${NAME}
         git config user.email ${EMAIL}
