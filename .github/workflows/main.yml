@@ -39,7 +39,7 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         job_name: update
-    - name: Backup
+    - name: update
       env:
         ACCOUNT: tkoyama010
         NAME: "qiita-auto-update"
