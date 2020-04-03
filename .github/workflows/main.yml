@@ -33,6 +33,12 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Get Job URL
+      uses: Tiryoh/gha-jobid-action@v0
+      id: jobs
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        job_name: update
     - name: Backup
       run: |
         python qiita_backupper.py ${ACCOUNT} md
@@ -43,11 +49,13 @@ jobs:
         git checkout tkoyama010-patch-1
         git branch
         git add doc
-        git commit --allow-empty -m ":green_heart: GITHUB_ACTION $GITHUB_WORKSPACE"
+        git commit --allow-empty -m ":green_heart: JOB_ID $JOB_ID
+        HTML_URL $HTML_URL"
         git push origin tkoyama010-patch-1
       env:
         ACCOUNT: tkoyama010
         NAME: "qiita-auto-update"
         EMAIL: "qiita-auto-update"
         REPO: qiita_backupper
-        ACTION: ${{ github.run_number }}
+        JOB_ID: ${{ steps.jobs.outputs.job_id }}
+        HTML_URL: ${{ steps.jobs.outputs.html_url }}
